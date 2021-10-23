@@ -4,17 +4,17 @@
 <script>
 
 export default {
-  name:'',
-  components:{},
-  data(){
+  name: '',
+  components: {},
+  data() {
     return{
       sampleData:''
     };
   },
-  setup(){},
-  created(){},
-  mounted(){},
-  unmounted(){},
-  methods:{}
+  setup() {},
+  created() {},
+  mounted() {},
+  unmounted() {},
+  methods: {}
 }
 </script>
