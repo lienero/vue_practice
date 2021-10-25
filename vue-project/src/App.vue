@@ -3,6 +3,9 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/databinding">DataBinding</router-link> |
     <router-link to="/databindinghtml">DataBindingHtml</router-link> |
+    <router-link to="/databindinglist">DataBindingList</router-link> |
+    <router-link to="/rendering">Rendering</router-link> |
+    <router-link to="/event">Event</router-link>
   </div>
   <router-view />
 </template>

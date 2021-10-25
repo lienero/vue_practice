@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import DataBinding from "../views/DataBindingStyle2.vue";
 import DataBindingHtml from "../views/DataBindingHtml.vue";
+import DataBindingList from "../views/DataBindingList.vue";
+import Rendering from "../views/RenderingVif.vue";
+import Event from "../views/EventClick.vue";
 
 const routes = [
   {
@@ -26,6 +29,21 @@ const routes = [
     path: "/databindinghtml",
     name: "DataBindingHtml",
     component: DataBindingHtml
+  },
+  {
+    path: "/databindinglist",
+    name: "DataBindingList",
+    component: DataBindingList
+  },
+  {
+    path: "/rendering",
+    name: "Rendering",
+    component: Rendering
+  },
+  {
+    path: "/event",
+    name: "Event",
+    component: Event
   }
 ];
 
