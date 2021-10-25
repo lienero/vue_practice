@@ -4,7 +4,7 @@ import DataBinding from "../views/DataBindingStyle2.vue";
 import DataBindingHtml from "../views/DataBindingHtml.vue";
 import DataBindingList from "../views/DataBindingList.vue";
 import Rendering from "../views/RenderingVif.vue";
-import Event from "../views/EventClick.vue";
+import Event from "../views/EventChange.vue";
 
 const routes = [
   {
