@@ -5,6 +5,7 @@ import DataBindingHtml from "../views/DataBindingHtml.vue";
 import DataBindingList from "../views/DataBindingList.vue";
 import Rendering from "../views/RenderingVif.vue";
 import Event from "../views/EventChange.vue";
+import Computed from "../views/Watch.vue";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: "/event",
     name: "Event",
     component: Event
+  },
+  {
+    path: "/computed",
+    name: "Computed",
+    component: Computed
   }
 ];
 

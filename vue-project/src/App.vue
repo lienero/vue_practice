@@ -5,7 +5,8 @@
     <router-link to="/databindinghtml">DataBindingHtml</router-link> |
     <router-link to="/databindinglist">DataBindingList</router-link> |
     <router-link to="/rendering">Rendering</router-link> |
-    <router-link to="/event">Event</router-link>
+    <router-link to="/event">Event</router-link> |
+    <router-link to="/computed">Computed</router-link> |
   </div>
   <router-view />
 </template>
