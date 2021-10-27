@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import DataBinding from "../views/DataBindingStyle2.vue";
+import DataBinding from "../views/NestedComponent.vue";
 import DataBindingHtml from "../views/DataBindingHtml.vue";
-import DataBindingList from "../views/DataBindingList.vue";
+import DataBindingList from "../views/DataBindingList2.vue";
 import Rendering from "../views/RenderingVif.vue";
 import Event from "../views/EventChange.vue";
 import Computed from "../views/Watch.vue";
