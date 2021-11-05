@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import DataBinding from "../views/Plugins.vue";
+import DataBinding from "../views/StoreAccess.vue";
 import DataBindingHtml from "../views/DataBindingHtml.vue";
 import DataBindingList from "../views/DataBindingList2.vue";
 import Rendering from "../views/RenderingVif.vue";
