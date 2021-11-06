@@ -56,6 +56,12 @@ const routes = [
     path: "/kakaologin",
     name: "KakaoLogin",
     component: KakaoLogin
+  },
+  {
+    path: "/naverlogin",
+    name: "NaverLogin",
+    component: () =>
+      import(/* webpackChunkName: "naverlogin" */ "../views/NaverLogin.vue")
   }
 ];
 
