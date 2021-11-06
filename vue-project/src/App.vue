@@ -8,7 +8,8 @@
     <router-link to="/event">Event</router-link> |
     <router-link to="/computed">Computed</router-link> |
     <router-link to="/kakaologin">login</router-link> |
-    <router-link to="/naverlogin">naverlogin</router-link>
+    <router-link to="/naverlogin">naverlogin</router-link> |
+    <router-link to="/googlelogin">googlelogin</router-link>
   </div>
   <router-view />
 </template>
