@@ -6,6 +6,7 @@ import DataBindingList from "../views/DataBindingList2.vue";
 import Rendering from "../views/RenderingVif.vue";
 import Event from "../views/EventChange.vue";
 import Computed from "../views/Watch.vue";
+import KakaoLogin from "../views/KakaoLogin.vue";
 
 const routes = [
   {
@@ -50,6 +51,11 @@ const routes = [
     path: "/computed",
     name: "Computed",
     component: Computed
+  },
+  {
+    path: "/kakaologin",
+    name: "KakaoLogin",
+    component: KakaoLogin
   }
 ];
 

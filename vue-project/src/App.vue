@@ -7,6 +7,7 @@
     <router-link to="/rendering">Rendering</router-link> |
     <router-link to="/event">Event</router-link> |
     <router-link to="/computed">Computed</router-link> |
+    <router-link to="/kakaologin">login</router-link>
   </div>
   <router-view />
 </template>

@@ -22,3 +22,4 @@ createApp(App)
   .use(i18nPlugin, i18nStrings)
   .mixin(mixins)
   .mount("#app");
+window.Kakao.init("64b8829af6e1aef65979542f5f196145");
