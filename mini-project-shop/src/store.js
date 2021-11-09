@@ -2,7 +2,6 @@ import { createStore } from 'vuex';
 
 import persistedstate from 'vuex-persistedstate';
 
-/* eslint-disable no-unused-vars */
 const store = createStore({
   state() {
     return {
@@ -20,3 +19,5 @@ const store = createStore({
     }),
   ],
 });
+
+export default store;
