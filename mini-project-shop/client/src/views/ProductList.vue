@@ -29,7 +29,8 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">장바구니 담기</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">주문하기</button>
                 </div>
-                <small class="text-dark">{{ product.product_price }}원</small>
+                <!-- number.toLocaleString('ko-KR') 원화 기준 천마다 콤마 찍기 -->
+                <small class="text-dark">{{ product.product_price.toLocaleString('ko-KR') }}원</small>
               </div>
             </div>
           </div>
