@@ -3,19 +3,23 @@ const app = express();
 const session = require('express-session');
 const fs = require('fs');
 
-app.use(session({
-  secret: 'secret code',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false,
-    maxAge: 1000 * 60 * 60 //쿠기 유효시간 1시간
-  }
-}));
+app.use(
+  session({
+    secret: 'secret code',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,
+      maxAge: 1000 * 60 * 60, //쿠기 유효시간 1시간
+    },
+  }),
+);
 
-app.use(express.json({
-  limit: '50mb'
-}));
+app.use(
+  express.json({
+    limit: '50mb',
+  }),
+);
 
 const server = app.listen(3000, () => {
   console.log('Server started. port 3000.');
@@ -30,11 +34,12 @@ fs.watchFile(__dirname + '/sql.js', (curr, prev) => {
 });
 
 const db = {
-  database: "dev_class",
+  database: 'dev_class',
   connectionLimit: 10,
-  host: "192.168.219.102",
-  user: "root",
-  password: "mariadb"
+  host: '127.0.0.1',
+  user: 'root',
+  password: '',
+  port: '3309',
 };
 
 const dbPool = require('mysql').createPool(db);
@@ -49,12 +54,12 @@ app.post('/api/login', async (request, res) => {
       res.send(request.body.param[0]);
     } else {
       res.send({
-        error: "Please try again or contact system manager."
+        error: 'Please try again or contact system manager.',
       });
     }
   } catch (err) {
     res.send({
-      error: "DB access error"
+      error: 'DB access error',
     });
   }
 });
@@ -65,54 +70,51 @@ app.post('/api/logout', async (request, res) => {
 });
 
 app.post('/upload/:productId/:type/:fileName', async (request, res) => {
-
-  let {
-    productId,
-    type,
-    fileName
-  } = request.params;
+  let { productId, type, fileName } = request.params;
   const dir = `${__dirname}/uploads/${productId}`;
   const file = `${dir}/${fileName}`;
-  if (!request.body.data) return fs.unlink(file, async (err) => res.send({
-    err
-  }));
+  if (!request.body.data)
+    return fs.unlink(file, async (err) =>
+      res.send({
+        err,
+      }),
+    );
   const data = request.body.data.slice(request.body.data.indexOf(';base64,') + 8);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);
   fs.writeFile(file, data, 'base64', async (error) => {
-    await req.db('productImageInsert', [{
-      product_id: productId,
-      type: type,
-      path: fileName
-    }]);
+    await req.db('productImageInsert', [
+      {
+        product_id: productId,
+        type: type,
+        path: fileName,
+      },
+    ]);
 
     if (error) {
       res.send({
-        error
+        error,
       });
     } else {
-      res.send("ok");
+      res.send('ok');
     }
   });
 });
 
 app.get('/download/:productId/:fileName', (request, res) => {
-  const {
-    productId,
-    type,
-    fileName
-  } = request.params;
+  const { productId, type, fileName } = request.params;
   const filepath = `${__dirname}/uploads/${productId}/${fileName}`;
-  res.header('Content-Type', `image/${fileName.substring(fileName.lastIndexOf("."))}`);
-  if (!fs.existsSync(filepath)) res.send(404, {
-    error: 'Can not found file.'
-  });
+  res.header('Content-Type', `image/${fileName.substring(fileName.lastIndexOf('.'))}`);
+  if (!fs.existsSync(filepath))
+    res.send(404, {
+      error: 'Can not found file.',
+    });
   else fs.createReadStream(filepath).pipe(res);
 });
 
 app.post('/apirole/:alias', async (request, res) => {
   if (!request.session.email) {
     return res.status(401).send({
-      error: 'You need to login.'
+      error: 'You need to login.',
     });
   }
 
@@ -120,7 +122,7 @@ app.post('/apirole/:alias', async (request, res) => {
     res.send(await req.db(request.params.alias));
   } catch (err) {
     res.status(500).send({
-      error: err
+      error: err,
     });
   }
 });
@@ -130,21 +132,22 @@ app.post('/api/:alias', async (request, res) => {
     res.send(await req.db(request.params.alias, request.body.param, request.body.where));
   } catch (err) {
     res.status(500).send({
-      error: err
+      error: err,
     });
   }
 });
 
 const req = {
   async db(alias, param = [], where = '') {
-    return new Promise((resolve, reject) => dbPool.query(sql[alias].query + where, param, (error, rows) => {
-      if (error) {
-        if (error.code != 'ER_DUP_ENTRY')
-          console.log(error);
-        resolve({
-          error
-        });
-      } else resolve(rows);
-    }));
-  }
+    return new Promise((resolve, reject) =>
+      dbPool.query(sql[alias].query + where, param, (error, rows) => {
+        if (error) {
+          if (error.code != 'ER_DUP_ENTRY') console.log(error);
+          resolve({
+            error,
+          });
+        } else resolve(rows);
+      }),
+    );
+  },
 };
